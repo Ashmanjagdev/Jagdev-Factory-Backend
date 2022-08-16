@@ -1,0 +1,55 @@
+<%- include("header") -%>
+
+<main class="productcard">
+<div class="card9">
+<div class="card__title">
+<div class="icon">
+  <a href="/"><i class="fa fa-arrow-left"></i></a>
+</div>
+<h3>New products</h3>
+</div>
+<div class="card__body row">
+<div class="half col lg-4  col-sm-6">
+  <div class="featured_text">
+    <h1 class="heads"><%=heading%></h1>
+    <p class="sub">Flat Machine Part</p>
+    <p class="price" style="color:red;">Rs.<%=price%></p>
+  </div>
+  <div class="image">
+    <img src="/uploads/<%=image%>" alt="">
+  </div>
+</div>
+<div class="half  col-sm-6">
+  <div class="description">
+    <p style="color:#189AB4!important;"><%=description%></p>
+  </div>
+  <span class="stock"><i class="fa fa-pen"></i> In stock</span>
+  <div class="reviews">
+    <ul class="stars">
+      <li><i class="fa fa-star"></i></li>
+      <li><i class="fa fa-star"></i></li>
+      <li><i class="fa fa-star"></i></li>
+      <li><i class="fa fa-star"></i></li>
+      <li><i class="fa fa-star-o"></i></li>
+    </ul>
+    <span>(64 reviews)</span>
+  </div>
+</div>
+</div>
+<div class="card__footer">
+<div class="recommend">
+  <p>Recommended by</p>
+  <h3>Andrew Palmer</h3>
+</div>
+<div class="action">
+  <form action="/product/<%=heading%>" method="post">
+    <div class="button">
+      <input type="submit" value="Add to Cart">
+    </div>
+  </form>
+</div>
+</div>
+</div>
+</main>
+
+<%- include("footer") -%>

@@ -1,0 +1,91 @@
+<%- include("header") -%>
+
+<main>
+    <div class="basket">
+      <h1 class="item-head">Cart Items</h1>
+      <div class="basket-labels">
+        <ul>
+          <li class="item item-heading">Item</li>
+          <li class="price">Customer review</li>
+          <li class="subtotal">  Subtotal</li>
+        </ul>
+      </div>
+
+
+      <%  items.forEach((item) => { %>
+      <div class="basket-product">
+        <div class="item">
+          <div class="product-image">
+            <img src="./uploads/<%=item.image%>" alt="Placholder Image 2" class="product-frame">
+          </div>
+          <div class="product-details">
+            <h1><strong><span class="item-quantity"><%=item.name%></span></strong> </h1>
+            <p>Flat Machine Part</p>
+            <p>Stock : Avalable</p>
+          </div>
+        </div>
+        <div class="price" ><i class="bi bi-star-fill" ></i><i class="bi bi-star-fill" ></i><i class="bi bi-star-fill" ></i><i class="bi bi-star-fill" ></i><i class="bi bi-star-fill" ></i></div>
+        <div class="subtotal"><b>Rs. <%=item.price%></b></div>
+        <div class="remove">
+          <form action="/cart" method="post">
+    <button name="delete" value="<%= item._id %>" onclick="this.form.submit()" >Remove</button>
+  </form>
+        </div>
+      </div>
+      <%  }); %>
+
+
+
+    </div>
+    <aside>
+      <div class="summary1">
+        <div class="summary-total-items"><span class="total-items"></span> Items in your Cart</div>
+        <hr>
+        <div class="summary-delivery">
+          <select name="delivery-collection" class="summary-delivery-selection">
+              <option value="0" selected="selected">Select Payment Method</option>
+             <option value="collection">Paytm</option>
+          </select>
+        </div>
+        <form class="" action="/paynow" method="post">
+          <div class="form-group">
+            <label for="">First Name: </label>
+            <input class="form-control" type="text" name="name" value="">
+          </div>
+          <div class="form-group">
+            <label for="">Email: </label>
+            <input class="form-control" type="text" name="email" value="">
+          </div>
+          <div class="form-group">
+            <label for="">Phone: </label>
+            <input class="form-control" type="text" name="phone" value="">
+          </div>
+          <div class="form-group">
+            <label for="">Address with pincode: </label>
+            <input class="form-control" type="text" name="phone" value="">
+          </div>
+            <div class="form-group">
+            <label for="">Amount: </label>
+            <input class="form-control" type="text" name="amount" value="<%= subtotal %>" readonly>
+          </div>
+          <br>
+          <br>
+          <div class="summary-total">
+            <div class="total-title">Total</div>
+            <div class="total-value final-value" id="basket-total"><%= subtotal %></div>
+          </div>
+          <div class="summary-checkout">
+            <button class="checkout-cta">Go to Secure Checkout</button>
+          </div>
+        </form>
+
+
+      </div>
+    </aside>
+  </main>
+
+
+
+
+
+<%- include("footer") -%>

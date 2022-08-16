@@ -1,0 +1,40 @@
+<%- include("header") -%>
+<div class="signform">
+<div class=" cont">
+    <div class="title">Sell your Product</div>
+    <div class=" Sell-items content">
+      <form action="/sellatcards1" enctype="multipart/form-data" method="post">
+        <div class="user-details">
+          <div class="input-box">
+            <span class="details">Item Name</span>
+            <input name="name" type="text" placeholder="Enter your name" required>
+          </div>
+          <div class="input-box" >
+            <span class="details">Address of Item</span>
+            <input name="address" type="text" placeholder="Enter your Address with Pincode" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Price</span>
+            <input name="price" type="text" placeholder="Enter the product price in rupees" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Item Description</span>
+            <input name="desc" type="text" placeholder="Enter the product price in rupees" required>
+          </div>
+        </div>
+        <div class="input-box">
+          <span class="details">Upload Image</span>
+                    <input type="file" id="image"
+                           name="file" value="" required>
+        </div>
+
+<br>
+        <div class="button">
+          <input type="submit" value="Sell">
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+<%- include("footer") -%>
