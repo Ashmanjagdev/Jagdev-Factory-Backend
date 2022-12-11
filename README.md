@@ -16,4 +16,4 @@ Technologies Used for this Project are-:
 • Mongoose to reduce the code for MongoDB
 • User command line -Hyper
 
-The link for the project is : https://jagdev-factory.herokuapp.com/
+The link for the project is : https://jagdev-factory.onrender.com/
