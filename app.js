@@ -69,7 +69,7 @@ passport.deserializeUser(User.deserializeUser());
 passport.use(new GoogleStrategy({
     clientID: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
-    callbackURL: "https://jagdev-factory.onrender.com/auth/google/jagdev-factory",
+    callbackURL: "https://jagdev-factory.herokuapp.com/auth/google/jagdev-factory",
     userProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo"
   },
   function(accessToken, refreshToken, profile, cb) {
@@ -98,7 +98,8 @@ var sellitems = new mongoose.Schema({
    price: String,
    desc: String,
    image:String,
-   check:String
+   check:String,
+   reviews:[String]
  },
 cards2:{
  name: String,
@@ -107,7 +108,8 @@ cards2:{
  price: String,
  desc: String,
  image:String,
- check:String
+ check:String,
+ reviews:[String]
 }
 });
 
@@ -248,11 +250,18 @@ app.get('/product/:head',function(req,res){
   Item.find({},function(error,data){
     data.forEach((item) => {
       if(item.cards1.checkname===_.kebabCase([string=requestedTitle])){
-      res.render("product",{heading:item.cards1.name,price:item.cards1.price,description:item.cards1.desc,image:item.cards1.image,name:"logout"});
+
+        Review.find({productname:_.kebabCase([string=requestedTitle])}, (err, items3) => {
+
+      res.render("product",{heading:item.cards1.name,price:item.cards1.price,description:item.cards1.desc,image:item.cards1.image,name:"logout",docs:items3});
+});
+
 }
       if(item.cards2.checkname===_.kebabCase([string=requestedTitle]))
-      res.render("product",{heading:item.cards2.name,price:item.cards2.price,description:item.cards2.desc,image:item.cards2.image,name:"logout"});
+      Review.find({productname:_.kebabCase([string=requestedTitle])}, (err, items3) => {
 
+      res.render("product",{heading:item.cards2.name,price:item.cards2.price,description:item.cards2.desc,image:item.cards2.image,name:"logout",docs:items3});
+});
   });
 });
 });
@@ -288,6 +297,35 @@ app.post('/product/:head',function(req,res){
 });
 res.redirect("/product/"+ req.params.head);
 }
+else{
+ res.redirect("/Signup/login");
+}
+});
+
+var reviews = new mongoose.Schema({
+  productname: String,
+  reviewername: String,
+   review: String
+});
+
+const Review=mongoose.model('Review',reviews);
+
+
+app.post('/reviews/:head',function(req,res){
+
+  const finder=_.kebabCase([string=req.params.head]);
+
+  if(req.isAuthenticated()){
+
+    var allreviews =new Review ({
+      productname: finder,
+      reviewername: req.user.username,
+      review: req.body.review
+      });
+    allreviews.save();
+    res.redirect("/product/"+ req.params.head);
+}
+
 else{
  res.redirect("/Signup/login");
 }
