@@ -49,7 +49,48 @@
   </form>
 </div>
 </div>
+
 </div>
 </main>
+
+<br>
+<div class="reviewbox">
+
+
+<form action="/reviews/<%=heading%>" class="mb-5" method="post" >
+              <h3 class="heading mb-4">Post your Review</h3>
+
+
+              <div class="row">
+                <div class="col-md-12 form-group">
+                  <textarea style="height:70px;" class="form-control" name="review" id="message" cols="30" rows="7" placeholder="Write your review"></textarea>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12" >
+                  <input style="background-color:orange;border:none;" type="submit" value="Post Review" class="btn btn-primary rounded-0 py-2 px-4">
+                <span class="submitting"></span>
+                </div>
+              </div>
+            </form>
+            </div>
+<div style="background-color:white">
+
+
+<div class="reviewbox2"
+style="position:relative; left:45%;">
+  <h1 style="margin:auto; color:black;font-family: "Montserrat"">Reviews</h1>
+  <br>
+</div>
+
+<div class="reviewbox">
+  <%  docs.forEach((item) => { %>
+    <h2 class="reviewerheading" style="color:orange; font-weight: 600;"># <%= item.reviewername %></h2>
+        <p>  <%= item.review %> </p>
+              <%  }); %>
+</div>
+<br>
+<br>
+</div>
 
 <%- include("footer") -%>
