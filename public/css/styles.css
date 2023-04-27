@@ -1039,3 +1039,19 @@ border: 1px solid;
 .google-btn:active {
   background: #1669F2;
 }
+
+
+.reviewbox{
+  font-family: "Montserrat";
+  position: relative;
+  left:10%;
+}
+.reviewbox2{
+  font-family: "Montserrat";
+}
+.reviewerheading{
+  font-size: 20px;
+}
+.reviewbox{
+  width:400px;
+}
