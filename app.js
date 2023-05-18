@@ -69,7 +69,7 @@ passport.deserializeUser(User.deserializeUser());
 passport.use(new GoogleStrategy({
     clientID: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
-    callbackURL: "https://jagdev-factory.herokuapp.com/auth/google/jagdev-factory",
+    callbackURL: "https://jagdev-factory.onrender.com/auth/google/jagdev-factory",
     userProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo"
   },
   function(accessToken, refreshToken, profile, cb) {
